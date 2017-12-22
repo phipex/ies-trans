@@ -2,9 +2,13 @@ package co.com.ies.service.impl;
 
 import co.com.ies.service.PlayRequestService;
 import co.com.ies.domain.PlayRequest;
+import co.com.ies.domain.enumeration.PlayType;
 import co.com.ies.repository.PlayRequestRepository;
 import co.com.ies.service.dto.PlayRequestDTO;
 import co.com.ies.service.mapper.PlayRequestMapper;
+
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -31,6 +35,42 @@ public class PlayRequestServiceImpl implements PlayRequestService{
         this.playRequestMapper = playRequestMapper;
     }
 
+    @Override
+    public PlayRequestDTO addCredit(BigDecimal valor) {
+		
+    	//TODO traer los datos de las variables faltantes
+    	
+    	PlayRequest playRequest = new PlayRequest();
+    	
+    	playRequest.setId(0L);
+    	playRequest.setPlaytype(PlayType.ADDCREDIT);
+    	playRequest.setAmount(valor);
+    	
+    	playRequest = playRequestRepository.save(playRequest);
+    	
+    	
+		return playRequestMapper.toDto(playRequest);
+    	
+    }
+    
+    
+    @Override
+    public PlayRequestDTO pay() {
+		
+    	PlayRequest playRequest = new PlayRequest();
+    	
+    	playRequest.setId(0L);
+    	playRequest.setPlaytype(PlayType.PAY);
+    	
+    	//TODO traer los datos del ultimo playrequest
+    	//TODO traer el valor a reclamar
+    	//TODO crear el movimiento
+    	//TODO guardar el movimiento
+    	
+    	return playRequestMapper.toDto(playRequest);
+    	
+    }
+    
     /**
      * Save a playRequest.
      *

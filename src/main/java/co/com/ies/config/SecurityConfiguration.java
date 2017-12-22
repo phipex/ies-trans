@@ -102,7 +102,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             
             .antMatchers("/").hasIpAddress(LOCALHOST)//solo se permiten peticiones locales
             
-            .antMatchers("/api/play-requests/addcredit").permitAll()
+            .antMatchers("/api/play-requests/addcredit/*").permitAll()
             
             .antMatchers("/api/play-requests/playpay").permitAll()
             

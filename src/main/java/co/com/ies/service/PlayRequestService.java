@@ -1,6 +1,9 @@
 package co.com.ies.service;
 
 import co.com.ies.service.dto.PlayRequestDTO;
+
+import java.math.BigDecimal;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -39,4 +42,17 @@ public interface PlayRequestService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Retorna el movimiento de pago
+     * @return
+     */
+	PlayRequestDTO pay();
+
+	/**
+	 * Agrega el movimiento de agregar saldo
+	 * @param valor
+	 * @return
+	 */
+	PlayRequestDTO addCredit(BigDecimal valor);
 }
