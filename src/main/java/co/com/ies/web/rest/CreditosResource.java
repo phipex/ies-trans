@@ -55,7 +55,7 @@ public class CreditosResource {
             .body(result);
     }
 
-    /**
+   /* *//**
      * PUT  /creditos : Updates an existing creditos.
      *
      * @param creditos the creditos to update
@@ -63,7 +63,7 @@ public class CreditosResource {
      * or with status 400 (Bad Request) if the creditos is not valid,
      * or with status 500 (Internal Server Error) if the creditos couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+     *//*
     @PutMapping("/creditos")
     @Timed
     public ResponseEntity<Creditos> updateCreditos(@Valid @RequestBody Creditos creditos) throws URISyntaxException {
@@ -75,7 +75,7 @@ public class CreditosResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, creditos.getId().toString()))
             .body(result);
-    }
+    }*/
 
     /**
      * GET  /creditos : get all the creditos.
@@ -103,17 +103,17 @@ public class CreditosResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(creditos));
     }
 
-    /**
+  /*  *//**
      * DELETE  /creditos/:id : delete the "id" creditos.
      *
      * @param id the id of the creditos to delete
      * @return the ResponseEntity with status 200 (OK)
-     */
+     *//*
     @DeleteMapping("/creditos/{id}")
     @Timed
     public ResponseEntity<Void> deleteCreditos(@PathVariable Long id) {
         log.debug("REST request to delete Creditos : {}", id);
         creditosService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
+    }*/
 }

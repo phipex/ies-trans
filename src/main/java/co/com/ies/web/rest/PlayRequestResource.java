@@ -59,8 +59,8 @@ public class PlayRequestResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-
-    /**
+/*
+    *//**
      * PUT  /play-requests : Updates an existing playRequest.
      *
      * @param playRequestDTO the playRequestDTO to update
@@ -68,7 +68,7 @@ public class PlayRequestResource {
      * or with status 400 (Bad Request) if the playRequestDTO is not valid,
      * or with status 500 (Internal Server Error) if the playRequestDTO couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+     *//*
     @PutMapping("/play-requests")
     @Timed
     public ResponseEntity<PlayRequestDTO> updatePlayRequest(@Valid @RequestBody PlayRequestDTO playRequestDTO) throws URISyntaxException {
@@ -80,7 +80,7 @@ public class PlayRequestResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, playRequestDTO.getId().toString()))
             .body(result);
-    }
+    }*/
 
     /**
      * GET  /play-requests : get all the playRequests.
@@ -116,12 +116,12 @@ public class PlayRequestResource {
      *
      * @param id the id of the playRequestDTO to delete
      * @return the ResponseEntity with status 200 (OK)
-     */
+     *//*
     @DeleteMapping("/play-requests/{id}")
     @Timed
     public ResponseEntity<Void> deletePlayRequest(@PathVariable Long id) {
         log.debug("REST request to delete PlayRequest : {}", id);
         playRequestService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
+    }*/
 }
