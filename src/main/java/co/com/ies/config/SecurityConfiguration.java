@@ -4,6 +4,7 @@ import co.com.ies.security.*;
 import co.com.ies.security.jwt.*;
 
 import org.springframework.beans.factory.BeanInitializationException;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -101,6 +102,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             
             .antMatchers("/").hasIpAddress(LOCALHOST)//solo se permiten peticiones locales
             
+            .antMatchers("/api/play-requests/addcredit").permitAll()
+            
+            .antMatchers("/api/play-requests/playpay").permitAll()
+            
+            
             .antMatchers("/api/register").permitAll()
             .antMatchers("/api/activate").permitAll()
             .antMatchers("/api/authenticate").permitAll()
@@ -128,4 +134,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
         return new SecurityEvaluationContextExtension();
     }
+    
+    
 }
