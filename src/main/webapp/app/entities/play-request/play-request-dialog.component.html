@@ -1,0 +1,126 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPlayRequestLabel" jhiTranslate="gamestransactionApp.playRequest.home.createOrEditLabel">Create or edit a Play Request</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!playRequest.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="playRequest.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.playtype" for="field_playtype">Playtype</label>
+            <select class="form-control" name="playtype" [(ngModel)]="playRequest.playtype" id="field_playtype"  required>
+                <option value="BET">{{'gamestransactionApp.PlayType.BET' | translate}}</option>
+                <option value="WIN">{{'gamestransactionApp.PlayType.WIN' | translate}}</option>
+                <option value="REFOUND">{{'gamestransactionApp.PlayType.REFOUND' | translate}}</option>
+                <option value="BALANCE">{{'gamestransactionApp.PlayType.BALANCE' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.playtype?.dirty && editForm.controls.playtype?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.playtype?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.token" for="field_token">Token</label>
+            <input type="text" class="form-control" name="token" id="field_token"
+                [(ngModel)]="playRequest.token" required/>
+            <div [hidden]="!(editForm.controls.token?.dirty && editForm.controls.token?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.token?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.system" for="field_system">System</label>
+            <input type="text" class="form-control" name="system" id="field_system"
+                [(ngModel)]="playRequest.system" required/>
+            <div [hidden]="!(editForm.controls.system?.dirty && editForm.controls.system?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.system?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.timestamp" for="field_timestamp">Timestamp</label>
+            <div class="d-flex">
+                <input id="field_timestamp" type="datetime-local" class="form-control" name="timestamp" [(ngModel)]="playRequest.timestamp"
+                required/>
+            </div>
+            <div [hidden]="!(editForm.controls.timestamp?.dirty && editForm.controls.timestamp?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.timestamp?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.timestamp?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.ticketid" for="field_ticketid">Ticketid</label>
+            <input type="text" class="form-control" name="ticketid" id="field_ticketid"
+                [(ngModel)]="playRequest.ticketid" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.transactionid" for="field_transactionid">Transactionid</label>
+            <input type="text" class="form-control" name="transactionid" id="field_transactionid"
+                [(ngModel)]="playRequest.transactionid" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="playRequest.amount" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.balance" for="field_balance">Balance</label>
+            <input type="number" class="form-control" name="balance" id="field_balance"
+                [(ngModel)]="playRequest.balance" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.bonusbalance" for="field_bonusbalance">Bonusbalance</label>
+            <input type="number" class="form-control" name="bonusbalance" id="field_bonusbalance"
+                [(ngModel)]="playRequest.bonusbalance" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.user" for="field_user">User</label>
+            <input type="text" class="form-control" name="user" id="field_user"
+                [(ngModel)]="playRequest.user" required/>
+            <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gamestransactionApp.playRequest.operator" for="field_operator">Operator</label>
+            <input type="text" class="form-control" name="operator" id="field_operator"
+                [(ngModel)]="playRequest.operator" required/>
+            <div [hidden]="!(editForm.controls.operator?.dirty && editForm.controls.operator?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.operator?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

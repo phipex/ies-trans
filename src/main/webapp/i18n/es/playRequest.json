@@ -1,0 +1,31 @@
+{
+    "gamestransactionApp": {
+        "playRequest" : {
+            "home": {
+                "title": "Play Requests",
+                "createLabel": "Crear nuevo Play Request",
+                "createOrEditLabel": "Crear o editar Play Request"
+            },
+            "created": "Un nuevo Play Request ha sido creado con el identificador {{ param }}",
+            "updated": "Un Play Request ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Play Request ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Play Request {{ id }}?"
+            },
+            "detail": {
+                "title": "Play Request"
+            },
+            "playtype": "Playtype",
+            "token": "Token",
+            "system": "System",
+            "timestamp": "Timestamp",
+            "ticketid": "Ticketid",
+            "transactionid": "Transactionid",
+            "amount": "Amount",
+            "balance": "Balance",
+            "bonusbalance": "Bonusbalance",
+            "user": "User",
+            "operator": "Operator"
+        }
+    }
+}

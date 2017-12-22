@@ -1,0 +1,66 @@
+
+<div *ngIf="playRequest">
+    <h2><span jhiTranslate="gamestransactionApp.playRequest.detail.title">Play Request</span> {{playRequest.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.playtype">Playtype</span></dt>
+        <dd>
+            <span jhiTranslate="{{'gamestransactionApp.PlayType.' + playRequest.playtype}}">{{playRequest.playtype}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.token">Token</span></dt>
+        <dd>
+            <span>{{playRequest.token}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.system">System</span></dt>
+        <dd>
+            <span>{{playRequest.system}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.timestamp">Timestamp</span></dt>
+        <dd>
+            <span>{{playRequest.timestamp | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.ticketid">Ticketid</span></dt>
+        <dd>
+            <span>{{playRequest.ticketid}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.transactionid">Transactionid</span></dt>
+        <dd>
+            <span>{{playRequest.transactionid}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.amount">Amount</span></dt>
+        <dd>
+            <span>{{playRequest.amount}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.balance">Balance</span></dt>
+        <dd>
+            <span>{{playRequest.balance}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.bonusbalance">Bonusbalance</span></dt>
+        <dd>
+            <span>{{playRequest.bonusbalance}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.user">User</span></dt>
+        <dd>
+            <span>{{playRequest.user}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.playRequest.operator">Operator</span></dt>
+        <dd>
+            <span>{{playRequest.operator}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'play-request/'+ playRequest.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

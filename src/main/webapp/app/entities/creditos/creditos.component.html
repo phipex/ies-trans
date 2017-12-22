@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="gamestransactionApp.creditos.home.title">Creditos</span>
+        <button class="btn btn-primary float-right jh-create-entity create-creditos" [routerLink]="['/', { outlets: { popup: ['creditos-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="gamestransactionApp.creditos.home.createLabel">
+            Create new Creditos
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="creditos">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="gamestransactionApp.creditos.coinIn">Coin In</span></th>
+            <th><span jhiTranslate="gamestransactionApp.creditos.coinOut">Coin Out</span></th>
+            <th><span jhiTranslate="gamestransactionApp.creditos.handpay">Handpay</span></th>
+            <th><span jhiTranslate="gamestransactionApp.creditos.jackpot">Jackpot</span></th>
+            <th><span jhiTranslate="gamestransactionApp.creditos.bill">Bill</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let creditos of creditos ;trackBy: trackId">
+                <td><a [routerLink]="['../creditos', creditos.id ]">{{creditos.id}}</a></td>
+                <td>{{creditos.coinIn}}</td>
+                <td>{{creditos.coinOut}}</td>
+                <td>{{creditos.handpay}}</td>
+                <td>{{creditos.jackpot}}</td>
+                <td>{{creditos.bill}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../creditos', creditos.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'creditos/'+ creditos.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'creditos/'+ creditos.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

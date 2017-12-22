@@ -1,0 +1,42 @@
+
+<div *ngIf="creditos">
+    <h2><span jhiTranslate="gamestransactionApp.creditos.detail.title">Creditos</span> {{creditos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gamestransactionApp.creditos.coinIn">Coin In</span></dt>
+        <dd>
+            <span>{{creditos.coinIn}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.creditos.coinOut">Coin Out</span></dt>
+        <dd>
+            <span>{{creditos.coinOut}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.creditos.handpay">Handpay</span></dt>
+        <dd>
+            <span>{{creditos.handpay}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.creditos.jackpot">Jackpot</span></dt>
+        <dd>
+            <span>{{creditos.jackpot}}</span>
+        </dd>
+        <dt><span jhiTranslate="gamestransactionApp.creditos.bill">Bill</span></dt>
+        <dd>
+            <span>{{creditos.bill}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'creditos/'+ creditos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

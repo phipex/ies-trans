@@ -1,0 +1,25 @@
+{
+    "gamestransactionApp": {
+        "creditos" : {
+            "home": {
+                "title": "Creditos",
+                "createLabel": "Crear nuevo Creditos",
+                "createOrEditLabel": "Crear o editar Creditos"
+            },
+            "created": "Un nuevo Creditos ha sido creado con el identificador {{ param }}",
+            "updated": "Un Creditos ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Creditos ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Creditos {{ id }}?"
+            },
+            "detail": {
+                "title": "Creditos"
+            },
+            "coinIn": "Coin In",
+            "coinOut": "Coin Out",
+            "handpay": "Handpay",
+            "jackpot": "Jackpot",
+            "bill": "Bill"
+        }
+    }
+}

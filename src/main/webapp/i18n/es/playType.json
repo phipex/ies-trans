@@ -1,0 +1,11 @@
+{
+    "gamestransactionApp": {
+        "PlayType" : {
+            "null": "",
+            "BET": "BET",
+            "WIN": "WIN",
+            "REFOUND": "REFOUND",
+            "BALANCE": "BALANCE"
+        }
+    }
+}
