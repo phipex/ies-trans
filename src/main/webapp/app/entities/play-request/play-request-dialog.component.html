@@ -17,8 +17,11 @@
             <select class="form-control" name="playtype" [(ngModel)]="playRequest.playtype" id="field_playtype"  required>
                 <option value="BET">{{'gamestransactionApp.PlayType.BET' | translate}}</option>
                 <option value="WIN">{{'gamestransactionApp.PlayType.WIN' | translate}}</option>
-                <option value="REFOUND">{{'gamestransactionApp.PlayType.REFOUND' | translate}}</option>
-                <option value="BALANCE">{{'gamestransactionApp.PlayType.BALANCE' | translate}}</option>
+                <option value="REFUND">{{'gamestransactionApp.PlayType.REFUND' | translate}}</option>
+                <option value="GETBALANCE">{{'gamestransactionApp.PlayType.GETBALANCE' | translate}}</option>
+                <option value="BONUS">{{'gamestransactionApp.PlayType.BONUS' | translate}}</option>
+                <option value="PAY">{{'gamestransactionApp.PlayType.PAY' | translate}}</option>
+                <option value="ADDCREDIT">{{'gamestransactionApp.PlayType.ADDCREDIT' | translate}}</option>
             </select>
             <div [hidden]="!(editForm.controls.playtype?.dirty && editForm.controls.playtype?.invalid)">
                 <small class="form-text text-danger"

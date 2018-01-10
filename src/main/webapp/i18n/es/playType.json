@@ -4,8 +4,11 @@
             "null": "",
             "BET": "BET",
             "WIN": "WIN",
-            "REFOUND": "REFOUND",
-            "BALANCE": "BALANCE"
+            "REFUND": "REFUND",
+            "GETBALANCE": "BALANCE",
+            "BONUS":"BONUS",
+            "PAY":"PAY",
+            "ADDCREDIT":"ADDCREDIT"
         }
     }
 }
