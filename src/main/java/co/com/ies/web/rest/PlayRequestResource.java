@@ -61,11 +61,11 @@ public class PlayRequestResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-    
+
     /**
      * POST  /playpay : Informa que se realizar un pago de dinero.
      *
-     * 
+     *
      * @return the ResponseEntity with status 201 (Created) and with body the new playRequestDTO, or with status 400 (Bad Request) if the playRequest has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
@@ -73,33 +73,31 @@ public class PlayRequestResource {
     @Timed
     public ResponseEntity<PlayRequestDTO> createPayRequest() throws URISyntaxException {
         log.debug("REST request to save pay PlayRequest : {}");
-        
+
         PlayRequestDTO result = playRequestService.pay();
         return ResponseEntity.created(new URI("/api/play-requests/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-    
+
     /**
-     * POST  /playpay : Informa que se realizar un pago de dinero.
+     * POST  /addcredit :
      *
-     * 
+     *
      * @return the ResponseEntity with status 201 (Created) and with body the new playRequestDTO, or with status 400 (Bad Request) if the playRequest has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/play-requests/addcredit/{valor}")
     @Timed
     public ResponseEntity<PlayRequestDTO> createAddCreditRequest(@PathVariable Double valor) throws URISyntaxException {
-        log.debug("REST request to save pay PlayRequest : {}");
+        log.debug("REST request to save createAddCreditRequest : {}");
         BigDecimal bdValor = new BigDecimal(valor);
         PlayRequestDTO result = playRequestService.addCredit(bdValor);
         return ResponseEntity.created(new URI("/api/play-requests/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-    
-    
-    
+
 /*
     *//**
      * PUT  /play-requests : Updates an existing playRequest.

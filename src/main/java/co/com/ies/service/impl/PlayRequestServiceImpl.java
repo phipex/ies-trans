@@ -8,7 +8,10 @@ import co.com.ies.service.dto.PlayRequestDTO;
 import co.com.ies.service.mapper.PlayRequestMapper;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -24,6 +27,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PlayRequestServiceImpl implements PlayRequestService{
 
+    public ZonedDateTime dateTime;
+
     private final Logger log = LoggerFactory.getLogger(PlayRequestServiceImpl.class);
 
     private final PlayRequestRepository playRequestRepository;
@@ -35,42 +40,54 @@ public class PlayRequestServiceImpl implements PlayRequestService{
         this.playRequestMapper = playRequestMapper;
     }
 
+    /**
+     * Get the current day
+     * @return
+     */
+    private ZonedDateTime getCurrentDate() {
+        dateTime = ZonedDateTime.now();
+        log.debug("Request to get current date: {}", dateTime);
+        return dateTime;
+    }
+
     @Override
-    public PlayRequestDTO addCredit(BigDecimal valor) {
-		
-    	//TODO traer los datos de las variables faltantes
-    	
+    public PlayRequestDTO addCredit(BigDecimal valor)
+    {
     	PlayRequest playRequest = new PlayRequest();
-    	
+
     	playRequest.setId(0L);
     	playRequest.setPlaytype(PlayType.ADDCREDIT);
     	playRequest.setAmount(valor);
-    	
+
+    	//TODO traer los datos de las variables faltantes
+        playRequest.setOperator("ies_games");
+    	playRequest.setSystem("web");
+    	playRequest.setTimestamp(getCurrentDate());
+        playRequest.setToken("bla-bla");
+        playRequest.setUser("unity1");
+
     	playRequest = playRequestRepository.save(playRequest);
-    	
-    	
+
 		return playRequestMapper.toDto(playRequest);
-    	
     }
-    
-    
+
     @Override
     public PlayRequestDTO pay() {
-		
+
     	PlayRequest playRequest = new PlayRequest();
-    	
+
     	playRequest.setId(0L);
     	playRequest.setPlaytype(PlayType.PAY);
-    	
+
     	//TODO traer los datos del ultimo playrequest
     	//TODO traer el valor a reclamar
     	//TODO crear el movimiento
     	//TODO guardar el movimiento
-    	
+
     	return playRequestMapper.toDto(playRequest);
-    	
+
     }
-    
+
     /**
      * Save a playRequest.
      *
@@ -80,8 +97,13 @@ public class PlayRequestServiceImpl implements PlayRequestService{
     @Override
     public PlayRequestDTO save(PlayRequestDTO playRequestDTO) {
         log.debug("Request to save PlayRequest : {}", playRequestDTO);
+
         PlayRequest playRequest = playRequestMapper.toEntity(playRequestDTO);
         playRequest = playRequestRepository.save(playRequest);
+
+//        if (playRequest.getPlaytype() == PlayType.GETBALANCE)
+            playRequest.setBalance(BigDecimal.valueOf(100000));//esto es temporal (mock)
+
         return playRequestMapper.toDto(playRequest);
     }
 
